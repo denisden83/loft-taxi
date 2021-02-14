@@ -1,10 +1,11 @@
 import './App.css';
 import {Component} from "react";
+import LogIn from "./LogIn";
 
 class App extends Component {
   render() {
     return (
-      <>App</>
+      <LogIn/>
     );
   }
 }
