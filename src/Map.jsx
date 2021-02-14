@@ -1,7 +1,11 @@
 import React from 'react';
+import Header from "./Header";
 
 const Map = (props) => (
-  <>Map</>
+  <>
+    <Header/>
+    Map
+  </>
 );
 
 export default Map;

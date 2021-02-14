@@ -1,7 +1,11 @@
 import React from 'react';
+import Header from "./Header";
 
 const Profile = (props) => (
-  <>Profile</>
+  <>
+    <Header/>
+    Profile
+  </>
 );
 
 export default Profile;
