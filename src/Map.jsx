@@ -3,8 +3,8 @@ import Header from "./Header";
 
 const Map = (props) => (
   <>
-    <Header/>
-    Map
+    <Header {...props} />
+    <h1>Map</h1>
   </>
 );
 

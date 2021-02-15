@@ -4,17 +4,25 @@ import LogIn from "./LogIn";
 import SignUp from "./SignUp";
 import Map from "./Map";
 import Profile from "./Profile";
-import Header from "./Header";
+
+const PAGES = {
+  login: (props) => <LogIn {...props} />,
+  signup: (props) => <SignUp {...props} />,
+  map: (props) => <Map {...props} />,
+  profile: (props) => <Profile {...props} />,
+};
 
 class App extends Component {
+
+  state = {currentPage: "login"};
+
+  goToPage = (page) => this.setState({currentPage: page});
+
   render() {
     return (
       <>
         <main>
-          <section><LogIn /></section>
-          <section><SignUp /></section>
-          <section><Map /></section>
-          <section><Profile /></section>
+          <section>{PAGES[this.state.currentPage]({goToPage: this.goToPage})}</section>
         </main>
       </>
     );

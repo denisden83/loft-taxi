@@ -3,8 +3,8 @@ import Header from "./Header";
 
 const Profile = (props) => (
   <>
-    <Header/>
-    Profile
+    <Header {...props} />
+    <h1>Profile</h1>
   </>
 );
 

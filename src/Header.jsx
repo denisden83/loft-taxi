@@ -1,13 +1,31 @@
 import React from 'react';
 
-const Header = (props) => (
+const Header = ({goToPage}) => (
   <>
     <header>
       <nav>
         <ul>
-          <li><button>Map</button></li>
-          <li><button>Profile</button></li>
-          <li><button>Log out</button></li>
+          <li>
+            <button onClick={(e) => {
+              e.preventDefault();
+              goToPage("map")
+            }}>Map
+            </button>
+          </li>
+          <li>
+            <button onClick={(e) => {
+              e.preventDefault();
+              goToPage("profile")
+            }}>Profile
+            </button>
+          </li>
+          <li>
+            <button onClick={(e) => {
+              e.preventDefault();
+              goToPage("login")
+            }}>Log out
+            </button>
+          </li>
         </ul>
       </nav>
     </header>
