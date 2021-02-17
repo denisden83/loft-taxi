@@ -65,5 +65,27 @@ describe('renders App component', () => {
         expect(screen.getByText(/Log In/)).toBeInTheDocument()
       });
     });
+    describe('navigation from Profile page', () => {
+      beforeEach(() => {
+        render(<App/>);
+        userEvent.click(screen.getByText('Enter'));
+        userEvent.click(screen.getByText('profile'));
+      })
+      it('should render Profile page', function () {
+        expect(screen.getByText(/Profile/)).toBeInTheDocument();
+      })
+      it('should open Map page', function () {
+        userEvent.click(screen.getByText('map'));
+        expect(screen.getByText('Map')).toBeInTheDocument()
+      });
+      it('should open Profile page', function () {
+        userEvent.click(screen.getByText(/profile/));
+        expect(screen.getByText(/Profile/)).toBeInTheDocument()
+      });
+      it('should open Log In page', function () {
+        userEvent.click(screen.getByText(/log out/));
+        expect(screen.getByText(/Log In/)).toBeInTheDocument()
+      });
+    });
   });
 });
