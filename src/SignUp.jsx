@@ -67,7 +67,6 @@ class SignUp extends React.Component {
   render() {
     const {goToPage} = this.props;
     const {values, errors} = this.state;
-    console.log(values, errors);
     return (
       <>
         <h1>Sign Up</h1>
@@ -75,7 +74,7 @@ class SignUp extends React.Component {
           <button onClick={(e) => {
             e.preventDefault();
             goToPage("login")
-          }}>Log in
+          }}>log in
           </button>
         </h4>
         <form onSubmit={this.signUp}>

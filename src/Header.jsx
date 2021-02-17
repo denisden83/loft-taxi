@@ -9,21 +9,21 @@ const Header = ({goToPage}) => (
             <button onClick={(e) => {
               e.preventDefault();
               goToPage("map")
-            }}>Map
+            }}>map
             </button>
           </li>
           <li>
             <button onClick={(e) => {
               e.preventDefault();
               goToPage("profile")
-            }}>Profile
+            }}>profile
             </button>
           </li>
           <li>
             <button onClick={(e) => {
               e.preventDefault();
               goToPage("login")
-            }}>Log out
+            }}>log out
             </button>
           </li>
         </ul>

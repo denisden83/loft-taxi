@@ -53,7 +53,6 @@ class LogIn extends React.Component {
   render() {
     const {goToPage} = this.props;
     const {values, errors} = this.state;
-    console.log(values, errors);
     return (
       <>
         <h1>Log In</h1>
@@ -61,7 +60,7 @@ class LogIn extends React.Component {
           <button onClick={(e) => {
             e.preventDefault();
             goToPage("signup")
-          }}>Sign Up
+          }}>sign up
           </button>
         </h4>
         <form onSubmit={this.logIn}>
