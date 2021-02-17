@@ -27,5 +27,22 @@ describe('renders App component', () => {
         expect(screen.getByText(/Map/)).toBeInTheDocument()
       });
     });
+    describe('navigation from Sign Up page', () => {
+      beforeEach(() => {
+        render(<App/>);
+        userEvent.click(screen.getByText('sign up'));
+      })
+      it('should render Sign Up page', function () {
+        expect(screen.getByText(/Sign Up/)).toBeInTheDocument();
+      })
+      it('should open Log In page', function () {
+        userEvent.click(screen.getByText('log in'));
+        expect(screen.getByText('Log In')).toBeInTheDocument()
+      });
+      it('should open Map page', function () {
+        userEvent.click(screen.getByText(/Enter/));
+        expect(screen.getByText(/Map/)).toBeInTheDocument()
+      });
+    });
   });
 });
