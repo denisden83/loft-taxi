@@ -1,8 +1,31 @@
-import { render, screen } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import App from './App';
+import React from "react";
+import userEvent from "@testing-library/user-event";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+// jest.mock('./SignUp', () => () => <h1>Sign Up</h1>)
+// jest.mock('./Map', () => () => <h1>Map</h1>)
+// jest.mock('./Profile', () => () => <h1>Profile</h1>)
+
+describe('renders App component', () => {
+  it('should render Log In page', function () {
+    render(<App/>);
+    const element = screen.getByText(/Log In/i);
+    expect(element).toBeInTheDocument();
+  });
+  describe('navigation', () => {
+    describe('navigation from Log In page', () => {
+      beforeEach(() => {
+        render(<App/>);
+      });
+      it('should open Sign Up page', function () {
+        userEvent.click(screen.getByText(/sign up/i));
+        expect(screen.getByText(/Sign Up/)).toBeInTheDocument();
+      });
+      it('should open Map page', function () {
+        userEvent.click(screen.getByText('Enter'));
+        expect(screen.getByText(/Map/)).toBeInTheDocument()
+      });
+    });
+  });
 });
