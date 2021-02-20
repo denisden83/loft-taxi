@@ -1,27 +1,51 @@
 import React from 'react';
+import Paper from "@material-ui/core/Paper";
+import {Grid, Link, Typography} from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import withStyles from "@material-ui/core/styles/withStyles";
+
+const styles = () => ({
+  header: {
+    marginBottom: 30
+  },
+  subheader: {
+    marginBottom: 10
+  },
+  input: {
+    marginBottom: 30
+  },
+  paper: {
+    marginTop: 50,
+    marginBottom: 50,
+    padding: "45px 60px",
+    // minWidth: 500,
+    width: 500
+  },
+});
 
 const validate = (name, value) => {
   function passwordIsValid(password) {
-    return /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[^A-Za-z0-9])(?=.{5,10})/.test(password);
+    return /^\s*123123\s*$/.test(password);
   }
 
   function emailIsValid(email) {
-    return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
+    return /^\s*test@test.com\s*$/.test(email);
   }
 
   switch (name) {
     case "email":
-      if (!emailIsValid(value)) return "Email is not valid";
+      if (!emailIsValid(value)) return "email should be test@test.com";
       break;
     case "firstName":
-      if (!value) return "First Name is required";
+      if (!value) return "first Name is required";
       break;
     case "lastName":
-      if (!value) return "Last Name is required";
+      if (!value) return "last Name is required";
       break;
     case "password":
       if (!passwordIsValid(value)) {
-        return "Password does not meet the policy requirements";
+        return "password should be 123123";
       }
       break;
     default:
@@ -65,45 +89,92 @@ class SignUp extends React.Component {
   }
 
   render() {
-    const {goToPage} = this.props;
+    const {goToPage, classes} = this.props;
     const {values, errors} = this.state;
     return (
-      <>
-        <h1>Sign Up</h1>
-        <h4>Already signed up?
-          <button onClick={(e) => {
-            e.preventDefault();
-            goToPage("login")
-          }}>log in
-          </button>
-        </h4>
+      <Paper className={classes.paper}>
         <form onSubmit={this.signUp}>
-          <input type="email" name="email" value={values.email} onChange={this.handleFormElement}
-                 onBlur={this.handleFormElement}
-                 placeholder="Email *" required/><br/>
-          {errors.email && <p>{errors.email}</p>}
-          <input type="text" name="firstName" value={values.firstName} onChange={this.handleFormElement}
-                 onBlur={this.handleFormElement}
-                 placeholder="First Name *" required/>
-          <input type="text" name="lastName" value={values.lastName} onChange={this.handleFormElement}
-                 onBlur={this.handleFormElement}
-                 placeholder="Last Name *" required/><br/>
-          {errors.firstName && <p>{errors.firstName}</p>}
-          {errors.lastName && <p>{errors.lastName}</p>}
-          <input type="password" name="password" value={values.password} onChange={this.handleFormElement}
-                 onBlur={this.handleFormElement}
-                 placeholder="Password *" required/>
-          {errors.password && <p>{errors.password}</p>}
-          <ul style={{fontSize: "0.5em"}}>
-            <li>from 5 to 10 symbols</li>
-            <li>only latin letters and numbers</li>
-            <li>must contain at least one capital <br/>and small letter, one number</li>
-          </ul>
-          <button type="submit">Enter</button>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography className={classes.header} component="h1" variant="h4" align="left">
+                Sign Up
+              </Typography>
+              <Typography className={classes.subheader} component="p" align="left">
+                Already sign up?{" "}
+                <Link to="#" onClick={(e) => {
+                  e.preventDefault();
+                  goToPage("login")
+                }}>log in</Link>
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                className={classes.input}
+                required
+                name="email"
+                type="email"
+                label="Email"
+                placeholder="Email"
+                color="secondary"
+                fullWidth
+                onChange={this.handleFormElement}
+                onBlur={this.handleFormElement}
+                error={!!errors.email}
+                helperText={errors.email}/>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                className={classes.input}
+                required
+                name="firstName"
+                type="text"
+                label="First name"
+                placeholder="First name"
+                color="secondary"
+                fullWidth
+                onChange={this.handleFormElement}
+                onBlur={this.handleFormElement}
+                error={!!errors.firstName}
+                helperText={errors.firstName}/>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                className={classes.input}
+                required
+                name="lastName"
+                type="text"
+                label="Last name"
+                placeholder="Last name"
+                color="secondary"
+                fullWidth
+                onChange={this.handleFormElement}
+                onBlur={this.handleFormElement}
+                error={!!errors.lastName}
+                helperText={errors.lastName}/>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                className={classes.input}
+                required
+                name="password"
+                type="password"
+                label="Password"
+                placeholder="Password"
+                color="secondary"
+                fullWidth
+                onChange={this.handleFormElement}
+                onBlur={this.handleFormElement}
+                error={!!errors.password}
+                helperText={errors.password}/>
+            </Grid>
+            <Grid item xs={12} align="right">
+              <Button color="primary" type="submit" variant="contained">Enter</Button>
+            </Grid>
+          </Grid>
         </form>
-      </>
+      </Paper>
     );
   }
 }
 
-export default SignUp;
+export default withStyles(styles)(SignUp);

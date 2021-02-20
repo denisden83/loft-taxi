@@ -30,16 +30,16 @@ const validate = (name, value) => {
   }
 
   function emailIsValid(email) {
-    return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
+    return /^\s*test@test.com\s*$/.test(email);
   }
 
   switch (name) {
     case "email":
-      if (!emailIsValid(value)) return "email is not valid";
+      if (!emailIsValid(value)) return "email should be test@test.com";
       break;
     case "password":
       if (!passwordIsValid(value)) {
-        return "Password should be 123123";
+        return "password should be 123123";
       }
       break;
     default:
@@ -102,6 +102,7 @@ class LogIn extends React.Component {
                 className={classes.input}
                 required
                 name="email"
+                type="email"
                 label="User name"
                 placeholder="User name"
                 color="secondary"
@@ -116,6 +117,7 @@ class LogIn extends React.Component {
                 className={classes.input}
                 required
                 name="password"
+                type="password"
                 label="Password"
                 placeholder="Password"
                 color="secondary"
@@ -126,7 +128,7 @@ class LogIn extends React.Component {
                 helperText={errors.password}/>
             </Grid>
             <Grid item xs={12} align="right">
-              <Button color="primary"  type="submit" variant="contained">Enter</Button>
+              <Button color="primary" type="submit" variant="contained">Enter</Button>
             </Grid>
           </Grid>
         </form>
