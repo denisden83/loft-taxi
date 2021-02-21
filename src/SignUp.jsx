@@ -101,7 +101,7 @@ class SignUp extends React.Component {
               </Typography>
               <Typography className={classes.subheader} component="p" align="left">
                 Already sign up?{" "}
-                <Link to="#" onClick={(e) => {
+                <Link onClick={(e) => {
                   e.preventDefault();
                   goToPage("login")
                 }}>log in</Link>
@@ -120,6 +120,7 @@ class SignUp extends React.Component {
                 onChange={this.handleFormElement}
                 onBlur={this.handleFormElement}
                 error={!!errors.email}
+                value={values.email}
                 helperText={errors.email}/>
             </Grid>
             <Grid item xs={6}>
@@ -135,6 +136,7 @@ class SignUp extends React.Component {
                 onChange={this.handleFormElement}
                 onBlur={this.handleFormElement}
                 error={!!errors.firstName}
+                value={values.firstName}
                 helperText={errors.firstName}/>
             </Grid>
             <Grid item xs={6}>
@@ -150,6 +152,7 @@ class SignUp extends React.Component {
                 onChange={this.handleFormElement}
                 onBlur={this.handleFormElement}
                 error={!!errors.lastName}
+                value={values.lastName}
                 helperText={errors.lastName}/>
             </Grid>
             <Grid item xs={12}>
@@ -165,6 +168,7 @@ class SignUp extends React.Component {
                 onChange={this.handleFormElement}
                 onBlur={this.handleFormElement}
                 error={!!errors.password}
+                value={values.password}
                 helperText={errors.password}/>
             </Grid>
             <Grid item xs={12} align="right">

@@ -91,7 +91,7 @@ class LogIn extends React.Component {
               </Typography>
               <Typography className={classes.subheader} component="p" align="left">
                 New User?{" "}
-                <Link to="#" onClick={(e) => {
+                <Link onClick={(e) => {
                   e.preventDefault();
                   goToPage("signup")
                 }}>sign up</Link>
@@ -110,6 +110,7 @@ class LogIn extends React.Component {
                 onChange={this.handleFormElement}
                 onBlur={this.handleFormElement}
                 error={!!errors.email}
+                value={values.email}
                 helperText={errors.email}/>
             </Grid>
             <Grid item xs={12}>
@@ -125,6 +126,7 @@ class LogIn extends React.Component {
                 onChange={this.handleFormElement}
                 onBlur={this.handleFormElement}
                 error={!!errors.password}
+                value={values.password}
                 helperText={errors.password}/>
             </Grid>
             <Grid item xs={12} align="right">
