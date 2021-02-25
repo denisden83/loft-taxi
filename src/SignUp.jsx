@@ -1,9 +1,7 @@
 import React from 'react';
-import Paper from "@material-ui/core/Paper";
-import {Grid, Link, Typography} from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import {Grid, Link, Typography, Paper, TextField, Button} from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
+import backgroundHoc from "./backgroundHoc";
 import validate from "./validate";
 
 const styles = () => ({
@@ -68,7 +66,11 @@ class SignUp extends React.Component {
         <form onSubmit={this.signUp}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Typography className={classes.header} component="h1" variant="h4" align="left">
+              <Typography
+                className={classes.header}
+                component="h1"
+                variant="h4"
+                align="left">
                 Sign Up
               </Typography>
               <Typography className={classes.subheader} component="p" align="left">
@@ -153,4 +155,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default withStyles(styles)(SignUp);
+export default backgroundHoc(withStyles(styles)(SignUp));

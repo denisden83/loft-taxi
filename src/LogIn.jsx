@@ -1,9 +1,7 @@
 import React from 'react';
 import withStyles from "@material-ui/core/styles/withStyles";
-import Paper from "@material-ui/core/Paper";
-import {Grid, Link, Typography} from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import {Grid, Link, Typography, Paper, TextField, Button} from "@material-ui/core";
+import backgroundHoc from "./backgroundHoc";
 import validate from "./validate";
 
 const styles = () => ({
@@ -117,4 +115,4 @@ class LogIn extends React.Component {
   }
 }
 
-export default withStyles(styles)(LogIn);
+export default backgroundHoc(withStyles(styles)(LogIn));
