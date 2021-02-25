@@ -4,6 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import {Grid, Link, Typography} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import validate from "./validate";
 
 const styles = () => ({
   header: {
@@ -23,29 +24,6 @@ const styles = () => ({
     width: 500
   },
 });
-
-const validate = (name, value) => {
-  function passwordIsValid(password) {
-    return /^\s*123123\s*$/.test(password);
-  }
-
-  function emailIsValid(email) {
-    return /^\s*test@test.com\s*$/.test(email);
-  }
-
-  switch (name) {
-    case "email":
-      if (!emailIsValid(value)) return "email should be test@test.com";
-      break;
-    case "password":
-      if (!passwordIsValid(value)) {
-        return "password should be 123123";
-      }
-      break;
-    default:
-      return;
-  }
-};
 
 class LogIn extends React.Component {
   state = {
