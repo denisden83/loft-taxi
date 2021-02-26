@@ -2,7 +2,8 @@ import React from 'react';
 import withStyles from "@material-ui/core/styles/withStyles";
 import {Grid, Link, Typography, Paper, TextField, Button} from "@material-ui/core";
 import backgroundHoc from "./backgroundHoc";
-import validate from "./validate";
+import {validate} from "./validate";
+import {withAuthHoc} from "./AuthContext";
 
 const styles = () => ({
   header: {
@@ -48,10 +49,14 @@ class LogIn extends React.Component {
     });
   };
 
-  logIn = e => {
+  authenticate = e => {
+    const {logIn, goToPage} = this.props;
     e.preventDefault();
     if (Object.values(this.state.errors).filter(e => !!e).length) return;
-    this.props.goToPage("map");
+    const {email, password} = e.target;
+    logIn(email.value, password.value, () => {
+      goToPage("map");
+    });
   }
 
   render() {
@@ -59,7 +64,7 @@ class LogIn extends React.Component {
     const {values, errors} = this.state;
     return (
       <Paper className={classes.paper}>
-        <form onSubmit={this.logIn}>
+        <form onSubmit={this.authenticate}>
           <Grid container>
             <Grid item xs={12}>
               <Typography className={classes.header} component="h1" variant="h4" align="left">
@@ -69,7 +74,7 @@ class LogIn extends React.Component {
                 New User?{" "}
                 <Link onClick={(e) => {
                   e.preventDefault();
-                  goToPage("signup")
+                  goToPage("signup");
                 }}>sign up</Link>
               </Typography>
             </Grid>
@@ -115,4 +120,4 @@ class LogIn extends React.Component {
   }
 }
 
-export default backgroundHoc(withStyles(styles)(LogIn));
+export default withAuthHoc(backgroundHoc(withStyles(styles)(LogIn)));

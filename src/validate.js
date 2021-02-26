@@ -1,12 +1,12 @@
-const validate = (name, value) => {
-  function passwordIsValid(password) {
-    return /^\s*123123\s*$/.test(password);
-  }
+export function passwordIsValid(password) {
+  return /^123123$/.test(password);
+}
 
-  function emailIsValid(email) {
-    return /^\s*test@test.com\s*$/.test(email);
-  }
+export function emailIsValid(email) {
+  return /^test@test.com$/.test(email);
+}
 
+export const validate = (name, value) => {
   switch (name) {
     case "email":
       if (!emailIsValid(value)) return "email should be test@test.com";
@@ -26,5 +26,3 @@ const validate = (name, value) => {
       return;
   }
 };
-
-export default validate;

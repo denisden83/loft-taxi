@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid, Link, Typography, Paper, TextField, Button} from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import backgroundHoc from "./backgroundHoc";
-import validate from "./validate";
+import {validate} from "./validate";
 
 const styles = () => ({
   header: {
@@ -77,7 +77,7 @@ class SignUp extends React.Component {
                 Already sign up?{" "}
                 <Link onClick={(e) => {
                   e.preventDefault();
-                  goToPage("login")
+                  goToPage("login");
                 }}>log in</Link>
               </Typography>
             </Grid>

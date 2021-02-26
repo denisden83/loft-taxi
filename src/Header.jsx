@@ -1,6 +1,7 @@
 import React from 'react';
+import {withAuthHoc} from "./AuthContext";
 
-const Header = ({goToPage}) => (
+const Header = ({goToPage, logOut}) => (
   <>
     <header>
       <nav>
@@ -8,21 +9,23 @@ const Header = ({goToPage}) => (
           <li>
             <button onClick={(e) => {
               e.preventDefault();
-              goToPage("map")
+              goToPage("map");
             }}>map
             </button>
           </li>
           <li>
             <button onClick={(e) => {
               e.preventDefault();
-              goToPage("profile")
+              goToPage("profile");
             }}>profile
             </button>
           </li>
           <li>
             <button onClick={(e) => {
               e.preventDefault();
-              goToPage("login")
+              logOut(() => {
+                goToPage("profile");
+              });
             }}>log out
             </button>
           </li>
@@ -32,4 +35,4 @@ const Header = ({goToPage}) => (
   </>
 );
 
-export default Header;
+export default withAuthHoc(Header);
