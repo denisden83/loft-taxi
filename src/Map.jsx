@@ -1,8 +1,10 @@
 import React from 'react';
 import Header from "./Header";
 import mapboxgl from "mapbox-gl";
-import withStyles from "@material-ui/core/styles/withStyles";
 import "mapbox-gl/dist/mapbox-gl.css";
+import withStyles from "@material-ui/core/styles/withStyles";
+import PropTypes from "prop-types";
+
 
 const styles = () => ({
   mapWrapper: {
@@ -51,5 +53,12 @@ class Map extends React.Component {
     );
   }
 }
+
+Map.propTypes = {
+  classes: PropTypes.objectOf(
+    PropTypes.string,
+  ),
+  goToPage: PropTypes.func,
+};
 
 export default withStyles(styles)(Map);

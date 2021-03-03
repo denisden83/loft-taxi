@@ -1,5 +1,7 @@
 import React from 'react';
 import {withAuthHoc} from "./AuthContext";
+import PropTypes from "prop-types";
+
 
 const Header = ({goToPage, logOut}) => (
   <>
@@ -35,4 +37,8 @@ const Header = ({goToPage, logOut}) => (
   </>
 );
 
+Header.propTypes = {
+  goToPage: PropTypes.func,
+  logOut: PropTypes.func,
+};
 export default withAuthHoc(Header);

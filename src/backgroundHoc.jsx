@@ -3,6 +3,8 @@ import {Grid, Paper} from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {Logo} from "loft-taxi-mui-theme";
 import backgroundImg from "./login-background.jpg"
+import PropTypes from "prop-types";
+
 
 const styles = () => ({
   background: {
@@ -13,6 +15,7 @@ const styles = () => ({
 
 export default function backgroundHoc (WrappedComponent) {
   class BackgroundHocWrapper extends Component {
+    static propTypes = {classes: PropTypes.object,};
     render() {
       const {classes, ...rest} = this.props;
       return (

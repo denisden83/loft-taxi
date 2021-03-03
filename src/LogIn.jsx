@@ -4,6 +4,7 @@ import {Grid, Link, Typography, Paper, TextField, Button} from "@material-ui/cor
 import backgroundHoc from "./backgroundHoc";
 import {validate} from "./validate";
 import {withAuthHoc} from "./AuthContext";
+import PropTypes from "prop-types";
 
 const styles = () => ({
   header: {
@@ -120,4 +121,9 @@ class LogIn extends React.Component {
   }
 }
 
+LogIn.propTypes = {
+  logIn: PropTypes.func,
+  logOut: PropTypes.func,
+  goToPage: PropTypes.func,
+};
 export default withAuthHoc(backgroundHoc(withStyles(styles)(LogIn)));

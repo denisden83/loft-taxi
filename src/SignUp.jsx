@@ -3,6 +3,8 @@ import {Grid, Link, Typography, Paper, TextField, Button} from "@material-ui/cor
 import withStyles from "@material-ui/core/styles/withStyles";
 import backgroundHoc from "./backgroundHoc";
 import {validate} from "./validate";
+import PropTypes from "prop-types";
+
 
 const styles = () => ({
   header: {
@@ -154,5 +156,12 @@ class SignUp extends React.Component {
     );
   }
 }
+
+SignUp.propTypes = {
+  classes: PropTypes.objectOf(
+    PropTypes.string,
+  ),
+  goToPage: PropTypes.func,
+};
 
 export default backgroundHoc(withStyles(styles)(SignUp));

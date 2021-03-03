@@ -5,6 +5,8 @@ import SignUp from "./SignUp";
 import Map from "./Map";
 import Profile from "./Profile";
 import {withAuthHoc} from "./AuthContext";
+import PropTypes from "prop-types";
+
 
 const PAGES = {
   login: (props) => <LogIn {...props} />,
@@ -42,5 +44,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  isLoggedIn: PropTypes.bool,
+};
 
 export default withAuthHoc(App);
